@@ -48,7 +48,7 @@ function Cart() {
 
   async function increaseQuantity(id) {
         const token = localStorage.getItem("token")
-    const response = await fetch("https://pepper-backend-2.onrender.com/products/increase",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/increase",{
         method:"PUT",
           headers:{
                "Content-Type": "application/json",

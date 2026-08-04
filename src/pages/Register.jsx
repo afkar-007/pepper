@@ -127,7 +127,7 @@ function Register() {
                 placeholder="Create password"
             />
         </div>
-        <p className='errorResgister'> {error}</p>
+      {error &&  <p className='errorResgister'> {error}</p>}
 
         <button onClick={UserPost} className="register-btn">
             Create Account

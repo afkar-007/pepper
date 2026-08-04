@@ -9,6 +9,7 @@
 
 .about-hero{
     height:55vh;
+    margin-top: 3.5rem;
     display:flex;
     flex-direction:column;
     justify-content:center;
