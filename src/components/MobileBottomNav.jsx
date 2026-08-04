@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-import '../styles/BottomNav.css'
+import '../styles/Bottomnav.css'
 
 
 
