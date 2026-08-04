@@ -1,0 +1,190 @@
+.category-section{
+    width:100%;
+    padding:80px 8%;
+    background:#050505;
+}
+
+.category-title{
+    text-align:center;
+    color:#fff;
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:60px;
+}
+
+.category-container{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:35px;
+
+}
+
+
+.category-card{
+
+    position:relative;
+
+    height:280px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    background:linear-gradient(145deg,#1a1a1a,#0a0a0a);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.45s;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.category-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:
+    0 30px 60px rgba(0,0,0,.45);
+
+}
+
+.category-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120px;
+    left:-80px;
+
+    width:260px;
+    height:260px;
+
+    background:rgba(255,255,255,.06);
+
+    filter:blur(80px);
+
+    border-radius:50%;
+
+}
+
+.category-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:-120px;
+    right:-100px;
+
+    width:220px;
+    height:220px;
+
+    background:rgba(255,170,0,.08);
+
+    filter:blur(70px);
+
+    border-radius:50%;
+
+}
+
+.category-card img{
+
+    width: 20rem;
+    height: 20rem;
+
+   justify-content: center;
+
+    object-fit:contain;
+
+    transition:.4s;
+
+    z-index:2;
+
+}
+
+.category-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.category-name{
+
+    position:absolute;
+
+    bottom:25px;
+
+    left:25px;
+
+    color:white;
+
+    font-size:28px;
+
+    font-weight:600;
+
+    z-index:2;
+    margin-bottom: 1rem;
+
+}
+
+.category-sub{
+
+    position:absolute;
+
+    bottom:8px;
+
+    left:25px;
+
+    color:#9ca3af;
+
+    font-size:14px;
+
+    z-index:2;
+   
+    
+
+}
+
+
+@media(max-width:992px){
+
+.category-container{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.category-container{
+
+grid-template-columns:1fr;
+
+}
+
+.category-card{
+
+height:240px;
+
+}
+
+
+
+.category-name{
+
+font-size:24px;
+
+}
+
+}
