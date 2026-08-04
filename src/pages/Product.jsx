@@ -28,7 +28,7 @@ function Product() {
 
     async function getProducts() {
         const token = localStorage.getItem("token")
-        const response= await fetch(`https://pepper-backend-2.onrender.com/products/getProducts?category=${category}&filter=${filter}&search=${search}`,{
+        const response= await fetch(`https://pepper-backend-2.onrender.com/pepper/products/getProducts?category=${category}&filter=${filter}&search=${search}`,{
             headers:{
                 authorization:`Bearer ${token}`
             }
