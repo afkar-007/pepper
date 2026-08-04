@@ -56,7 +56,7 @@ function Register() {
 
 
 
-      const response =  await fetch("http://localhost:3030/pepper/",{
+      const response =  await fetch("https://pepper-backend-2.onrender.com/pepper/",{
             method:"POST",
              headers: {
             "Content-Type": "application/json"

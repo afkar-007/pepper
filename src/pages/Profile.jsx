@@ -42,7 +42,7 @@ getprofile()
 
     async function orderget() {
     const token = localStorage.getItem("token")
-    const response = await fetch("http://localhost:3030/pepper/products/getOrder",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/getOrder",{
       
         headers:{
                "Content-Type": "application/json",
@@ -75,7 +75,7 @@ getprofile()
 
 
      const token = localStorage.getItem("token")
-     const response =await fetch(`http://localhost:3030/pepper/Profile`,{
+     const response =await fetch(`https://pepper-backend-2.onrender.com/pepper/Profile`,{
       
          headers:{
                
@@ -138,7 +138,7 @@ getprofile()
 
 
  const token = localStorage.getItem("token")
-    const response = await fetch(`http://localhost:3030/pepper/editProfile`,{
+    const response = await fetch(`https://pepper-backend-2.onrender.com/pepper/editProfile`,{
       method:"PUT",
          headers:{
                "Content-Type": "application/json",

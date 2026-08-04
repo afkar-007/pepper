@@ -20,7 +20,7 @@ function Order() {
 
    async function orderget() {
     const token = localStorage.getItem("token")
-    const response = await fetch("http://localhost:3030/pepper/products/getOrder",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/getOrder",{
       
         headers:{
                "Content-Type": "application/json",

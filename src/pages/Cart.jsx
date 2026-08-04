@@ -22,7 +22,7 @@ function Cart() {
 
   async function GetCart() {
     const token = localStorage.getItem("token")
-    const response = await fetch("http://localhost:3030/pepper/products/getcart",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/getcart",{
           headers:{
                
                 authorization:`Bearer ${token}`
@@ -48,7 +48,7 @@ function Cart() {
 
   async function increaseQuantity(id) {
         const token = localStorage.getItem("token")
-    const response = await fetch("http://localhost:3030/pepper/products/increase",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/products/increase",{
         method:"PUT",
           headers:{
                "Content-Type": "application/json",
@@ -68,7 +68,7 @@ function Cart() {
 
  async function decreaseQuantity(id) {
         const token = localStorage.getItem("token")
-    const response = await fetch("http://localhost:3030/pepper/products/decrease",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/decrease",{
         method:"PUT",
           headers:{
                "Content-Type": "application/json",
@@ -90,7 +90,7 @@ function Cart() {
 
   async function remove(id) {
     const token = localStorage.getItem("token")
-    const response = await fetch("http://localhost:3030/pepper/products/remove",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/remove",{
      method:"DELETE",
      headers:{
                "Content-Type": "application/json",
@@ -116,7 +116,7 @@ function Cart() {
 
   async function orderPost() {
     const token = localStorage.getItem("token")
-    const response = await fetch("http://localhost:3030/pepper/products/orderpost",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/orderpost",{
       method:"POST",
         headers:{
                "Content-Type": "application/json",

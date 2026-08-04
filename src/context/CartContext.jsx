@@ -27,7 +27,7 @@ function CartProvider ({children}){
 
 
 
-    const response = await fetch("http://localhost:3030/pepper/products/getcart",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/getcart",{
           headers:{
                
                 authorization:`Bearer ${token}`
@@ -60,7 +60,7 @@ function CartProvider ({children}){
 
 
 
-    const response = await fetch("http://localhost:3030/pepper/products/getwishlist",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/getwishlist",{
        headers:{
                 
                 authorization:`Bearer ${token}`
@@ -94,7 +94,7 @@ async function ordergetContext() {
       setOrder([])
       return
     }
-    const response = await fetch("http://localhost:3030/pepper/products/getOrder",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/getOrder",{
       
         headers:{
                "Content-Type": "application/json",

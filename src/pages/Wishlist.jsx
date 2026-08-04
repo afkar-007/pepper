@@ -18,7 +18,7 @@ getWishlist()
 
   async function getWishlist() {
  const token = localStorage.getItem("token")
-    const response = await fetch("http://localhost:3030/pepper/products/getwishlist",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/getwishlist",{
        headers:{
                 
                 authorization:`Bearer ${token}`
@@ -42,7 +42,7 @@ getWishlist()
 
    async function removeWish(id) {
  const token = localStorage.getItem("token")
-    const response = await fetch("http://localhost:3030/pepper/products/removeWishlist",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/removeWishlist",{
 
           method:"DELETE",
        headers:{
@@ -89,7 +89,7 @@ getWishlist()
 
      async function addtocart(id) {
         const token = localStorage.getItem("token")
-        const response= await fetch("http://localhost:3030/pepper/products/postcart",{
+        const response= await fetch("https://pepper-backend-2.onrender.com/pepper/products/postcart",{
             method:"POST",
             headers:{
                 "Content-Type": "application/json",

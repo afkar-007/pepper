@@ -19,7 +19,7 @@ function ProductDetails() {
     async function getoneProduct() {
          const token = localStorage.getItem("token")
 
-        const response = await fetch(`http://localhost:3030/pepper/products/getoneProduct/${id}`,{
+        const response = await fetch(`https://pepper-backend-2.onrender.com/pepper/products/getoneProduct/${id}`,{
              headers:{
                 authorization:`Bearer ${token}`
             }
@@ -54,7 +54,7 @@ function ProductDetails() {
 
      async function addtocart(id) {
         const token = localStorage.getItem("token")
-        const response= await fetch("http://localhost:3030/pepper/products/postcart",{
+        const response= await fetch("https://pepper-backend-2.onrender.com/pepper/products/postcart",{
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
@@ -79,7 +79,7 @@ function ProductDetails() {
 
      async function Addtowishlist(id) {
         const token = localStorage.getItem("token")
-        const response = await fetch("http://localhost:3030/pepper/products/postWishlist",{
+        const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/postWishlist",{
             method:"POST",
               headers:{
                 "Content-Type": "application/json",
