@@ -139,7 +139,7 @@ function ProductDetails() {
 <div className="leftSection">
 
 <div className="imageCard">
-<img  src={`http://localhost:3030/uploads/${product.image}`} alt="" />
+<img  src={`https://pepper-backend-2.onrender.com/uploads/${product.image}`} alt="" />
 </div>
 
 </div>

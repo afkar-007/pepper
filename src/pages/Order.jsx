@@ -78,7 +78,7 @@ function Order() {
 
                                     <img
                                     onClick={()=>navigate(`/productsDetails/${order.productId._id}`)}
-                                        src={`http://localhost:3030/uploads/${order.productId.image}`}
+                                        src={`https://pepper-backend-2.onrender.com/uploads/${order.productId.image}`}
                                         alt={order.productId.name}
                                     />
 

@@ -142,7 +142,7 @@ getWishlist()
                                 <div className="wishlist-card" key={item._id}>
 
                                     <img
-                                       src={`http://localhost:3030/uploads/${item.productId.image}`}
+                                       src={`https://pepper-backend-2.onrender.com/uploads/${item.productId.image}`}
                                         alt={item.productId.name}
                                     />
 

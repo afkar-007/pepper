@@ -176,7 +176,7 @@ function ProductPost() {
 
 
 
-    const response = await fetch("http://localhost:3030/pepper/products/product",{
+    const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/product",{
         method:"POST",
       
   body:formdata

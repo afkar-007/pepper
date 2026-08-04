@@ -209,7 +209,7 @@ function Cart() {
                   <div className="cart-image" onClick={()=>navigate(`/productsDetails/${item.productId._id}`)}>
                     <img
                     
-                       src={`http://localhost:3030/uploads/${item.productId.image}`}
+                       src={`https://pepper-backend-2.onrender.com/uploads/${item.productId.image}`}
                       alt={item.productId.name}
                     />
                   </div>

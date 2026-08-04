@@ -151,7 +151,7 @@ function Product() {
                 <div className="image-box">
 
                     <img
-                    src={`http://localhost:3030/uploads/${item.image}`}
+                    src={`https://pepper-backend-2.onrender.com/uploads/${item.image}`}
                     alt={item.name}
                     className="product-image"
                     onClick={()=>navigate(`/productsDetails/${item._id}`)}
