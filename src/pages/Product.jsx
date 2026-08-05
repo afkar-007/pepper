@@ -166,7 +166,7 @@ console.log(err);
                 <div className="image-box">
 
                     <img
-                    src={`https://pepper-backend-2.onrender.com/uploads/${item.image}`}
+                    src={item.image}
                     alt={item.name}
                     className="product-image"
                     onClick={()=>navigate(`/productsDetails/${item._id}`)}
