@@ -13,6 +13,7 @@ function Register() {
     const [email,setEmail]=useState("")
     const [password ,setPassword]=useState("")
     const [error,setError]=useState("")
+    const [showPassword,setShowPassword]=useState(false)
 
 
 
@@ -123,11 +124,15 @@ function Register() {
             <input
                 onChange={(e)=>setPassword(e.target.value)}
                 value={password}
-                type="password"
+                type={showPassword?"text":"password"}
                 placeholder="Create password"
             />
+                          <i
+        className={`bi ${showPassword ? "bi-eye-slash-fill" : "bi-eye-fill"} eye-icon`}
+        onClick={() => setShowPassword(!showPassword)}
+    ></i>
         </div>
-      {error &&  <p className='errorResgister'> {error}</p>}
+      {error &&  <p className='errorreg'> {error}</p>}
 
         <button onClick={UserPost} className="register-btn">
             Create Account

@@ -14,6 +14,7 @@ import MobileBottomNav from "../components/MobileBottomNav";
 
 function Product() {
     const {GetcartContext,getWishlistContext}=useContext(CartContext)
+    const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate()
     const {category}=useParams()
@@ -23,11 +24,15 @@ function Product() {
 
 
     useEffect(()=>{
+
         getProducts()
     },[search,filter,category])
 
     async function getProducts() {
+try{
+         setLoading(true);
         const token = localStorage.getItem("token")
+        
         const response= await fetch(`https://pepper-backend-2.onrender.com/pepper/products/getProducts?category=${category}&filter=${filter}&search=${search}`,{
             headers:{
                 authorization:`Bearer ${token}`
@@ -38,10 +43,13 @@ function Product() {
         console.log(data);
         if(response.ok){
             setProduct(data.data)
+        }}catch(err){
+console.log(err);
+
         }
-        
-
-
+        finally{
+    setLoading(false);
+        }
     }
 
     async function addtocart(id) {
@@ -137,6 +145,13 @@ function Product() {
         
         
     </div>
+
+    {loading ? (
+    <div className="loader-container">
+        <div className="loader"></div>
+        <p>Loading Products...</p>
+    </div>
+) : (
 
     <div className="products-wrapper">
 
@@ -271,7 +286,7 @@ function Product() {
 
         ))}
 
-    </div>
+    </div>)}
 
 </div>
 

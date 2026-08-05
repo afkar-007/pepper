@@ -9,7 +9,7 @@ import MobileBottomNav from "../components/MobileBottomNav";
 
 function Cart() {
   const {ordergetContext,GetcartContext}=useContext(CartContext)
-
+ const [loading, setLoading] = useState(true);
   
     const navigate = useNavigate()
   const [product,setProduct]=useState([])
@@ -21,6 +21,7 @@ function Cart() {
   },[])
 
   async function GetCart() {
+     setLoading(true);
     const token = localStorage.getItem("token")
     const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/getcart",{
           headers:{
@@ -39,7 +40,7 @@ function Cart() {
         
     }
     
-
+  setLoading(false);
   }
 
 
@@ -179,80 +180,100 @@ function Cart() {
    <div className="cart-container">
       <h1 className="cart-title">🛒 My Cart</h1>
       
-          <div className="cart-summary">
-            <h2>Total: {total}  ₹</h2>
+      
 
-            <button className="checkout-btn" onClick={orderPost}>
-              Proceed to Checkout
-            </button>
+   {loading ? (
+  <div className="loader-container">
+    <div className="loader"></div>
+    <p>Loading Cart...</p>
+  </div>
+) : product.length === 0 ? (
+  <div className="empty-cart">
+    <h2>Your Cart is Empty</h2>
+  </div>
+) : (
+  <>
+    <div className="cart-summary">
+      <h2>Total: ₹{total}</h2>
+
+      <button className="checkout-btn" onClick={orderPost}>
+        Proceed to Checkout
+      </button>
+    </div>
+
+    <div className="cart-list">
+      {product.map((item) => {
+        if (!item.productId) {
+          return (
+            <div className="cart-card" key={item._id}>
+              <h3>Product no longer available</h3>
+            </div>
+          );
+        }
+
+        return (
+          <div className="cart-card" key={item._id}>
+            <div
+              className="cart-image"
+              onClick={() => navigate(`/productsDetails/${item.productId._id}`)}
+            >
+              <img
+                src={`https://pepper-backend-2.onrender.com/uploads/${item.productId.image}`}
+                alt={item.productId.name}
+              />
+            </div>
+
+            <div className="cart-details">
+              <h2 onClick={() => navigate(`/productsDetails/${item.productId._id}`)}>
+                {item.productId.name}
+              </h2>
+
+              <p><strong>Brand:</strong> {item.productId.brand}</p>
+
+              <p><strong>Price:</strong> ₹{item.productId.price}</p>
+
+              <p><strong>Quantity:</strong> {item.quantity}</p>
+
+              <p>
+                <strong>Subtotal:</strong> ₹
+                {item.productId.price * item.quantity}
+              </p>
+
+              <div className="cart-buttons">
+                <button onClick={() => decreaseQuantity(item.productId._id)}>
+                  -
+                </button>
+
+                <span>{item.quantity}</span>
+
+                <button onClick={() => increaseQuantity(item.productId._id)}>
+                  +
+                </button>
+
+                <button
+                  className="remove-btn"
+                  onClick={() => remove(item.productId._id)}
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
           </div>
-
-      {product.length === 0 ? (
-        <div className="empty-cart">
-          <h2>Your Cart is Empty</h2>
-        </div>
-      ) : (
-        <>
-          <div className="cart-list">
-            {product.map((item) => {
-              // Skip deleted products
-              if (!item.productId) {
-                return (
-                  <div className="cart-card" key={item._id}>
-                    <h3>Product no longer available</h3>
-                  </div>
-                );
-              }
-
-              return (
-                <div className="cart-card" key={item._id}>
-                  <div className="cart-image" onClick={()=>navigate(`/productsDetails/${item.productId._id}`)}>
-                    <img
-                    
-                       src={`https://pepper-backend-2.onrender.com/uploads/${item.productId.image}`}
-                      alt={item.productId.name}
-                    />
-                  </div>
-
-                  <div className="cart-details">
-                    <h2 onClick={()=>navigate(`/productsDetails/${item.productId._id}`)}>{item.productId.name}</h2>
-
-                    <p>
-                      <strong>Brand:</strong> {item.productId.brand}
-                    </p>
-
-                    <p>
-                      <strong>Price:</strong> ₹{item.productId.price}
-                    </p>
-
-                    <p>
-                      <strong>Quantity:</strong> {item.quantity}
-                    </p>
-
-                    <p>
-                      <strong>Subtotal:</strong> ₹
-                      {item.productId.price * item.quantity}
-                    </p>
-
-                    <div className="cart-buttons">
-                      <button onClick={()=>decreaseQuantity(item.productId._id)} >-</button>
-
-                      <span>{item.quantity}</span>
-
-                      <button onClick={()=>increaseQuantity(item.productId._id)}>+</button>
-
-                      <button className="remove-btn" onClick={()=>remove(item.productId._id)}>
-                        Remove
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+        );
+      })}
+    </div>
 
         </>
       )}
+
+
+
+
+
+
+
+
+
     </div>
  
 

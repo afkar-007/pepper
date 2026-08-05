@@ -10,6 +10,7 @@ import MobileBottomNav from '../components/MobileBottomNav'
 
 
 function Order() {
+    const [loading, setLoading] = useState(true);
     const [orders,setOrders]=useState([])
     const navigate = useNavigate()
 
@@ -19,6 +20,8 @@ function Order() {
 
 
    async function orderget() {
+    
+      setLoading(true);
     const token = localStorage.getItem("token")
     const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/getOrder",{
       
@@ -43,7 +46,8 @@ function Order() {
     else{
       alert(data.message)
     }
-    
+
+     setLoading(false);
   }
 
 
@@ -59,63 +63,70 @@ function Order() {
                 My Orders
             </h1>
 
-            {
-                orders.length === 0 ?
+           {
+loading ? (
 
-                    <div className="empty-orders">
-                        <h2>No Orders Yet</h2>
-                        <p>Place your first order to see it here.</p>
-                    </div>
+    <div className="loader-container">
+        <div className="loader"></div>
+        <p>Loading Orders...</p>
+    </div>
 
-                    :
+) : orders.length === 0 ? (
 
-                    <div className="orders-grid">
+    <div className="empty-orders">
+        <h2>No Orders Yet</h2>
+        <p>Place your first order to see it here.</p>
+    </div>
 
-                        {
-                            orders.map((order) => (
+) : (
 
-                                <div className="order-card" key={order._id}>
+    <div className="orders-grid">
 
-                                    <img
-                                    onClick={()=>navigate(`/productsDetails/${order.productId._id}`)}
-                                        src={`https://pepper-backend-2.onrender.com/uploads/${order.productId.image}`}
-                                        alt={order.productId.name}
-                                    />
+        {orders.map((order) => (
 
-                                    <div className="order-details">
+            <div className="order-card" key={order._id}>
 
-                                        <h2 onClick={()=>navigate(`/productsDetails/${order.productId._id}`)}>{order.productId.name}</h2>
+                <img
+                    onClick={() => navigate(`/productsDetails/${order.productId._id}`)}
+                    src={`https://pepper-backend-2.onrender.com/uploads/${order.productId.image}`}
+                    alt={order.productId.name}
+                />
 
-                                        <p>
-                                            Brand :
-                                            <span>{order.productId.brand}</span>
-                                        </p>
+                <div className="order-details">
 
-                                        <p>
-                                            Quantity :
-                                            <span>{order.quantity}</span>
-                                        </p>
+                    <h2 onClick={() => navigate(`/productsDetails/${order.productId._id}`)}>
+                        {order.productId.name}
+                    </h2>
 
-                                        <p>
-                                            Total :
-                                            <span>
-                                                ₹{order.totalprice}
-                                            </span>
-                                        </p>
+                    <p>
+                        Brand :
+                        <span>{order.productId.brand}</span>
+                    </p>
 
-                                        <p className="status">
-                                            {order.orderStatus}
-                                        </p>
+                    <p>
+                        Quantity :
+                        <span>{order.quantity}</span>
+                    </p>
 
-                                    </div>
+                    <p>
+                        Total :
+                        <span>₹{order.totalprice}</span>
+                    </p>
 
-                                </div>
+                    <p className="status">
+                        {order.orderStatus}
+                    </p>
 
-                            ))
-                        }
+                </div>
 
-                    </div>
-            }
+            </div>
+
+        ))}
+
+    </div>
+
+)
+}
 
         </div>
         <MobileBottomNav/>

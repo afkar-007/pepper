@@ -11,12 +11,14 @@ import MobileBottomNav from "../components/MobileBottomNav";
 function Wishlist() {
   const [wishlist,setWishlist]=useState([])
   const {getWishlistContext,GetcartContext}=useContext(CartContext)
+ const [loading, setLoading] = useState(true);
 
   useEffect(()=>{
 getWishlist()
   },[])
 
   async function getWishlist() {
+     setLoading(true);
  const token = localStorage.getItem("token")
     const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/getwishlist",{
        headers:{
@@ -36,7 +38,7 @@ getWishlist()
       alert(data.message)
     }
     
-
+ setLoading(false);
     
   }
 
@@ -125,56 +127,65 @@ getWishlist()
                 My Wishlist
             </h1>
 
-            {
-                wishlist.length === 0 ?
+           {
+loading ? (
 
-                    <div className="wishlist-empty">
-                        <h2>Your Wishlist is Empty ❤️</h2>
-                    </div>
+    <div className="loader-container">
+        <div className="loader"></div>
+        <p>Loading Wishlist...</p>
+    </div>
 
-                    :
+) : wishlist.length === 0 ? (
 
-                    <div className="wishlist-grid">
+    <div className="wishlist-empty">
+        <h2>Your Wishlist is Empty ❤️</h2>
+    </div>
 
-                        {
-                            wishlist.map((item) => (
+) : (
 
-                                <div className="wishlist-card" key={item._id}>
+    <div className="wishlist-grid">
 
-                                    <img
-                                       src={`https://pepper-backend-2.onrender.com/uploads/${item.productId.image}`}
-                                        alt={item.productId.name}
-                                    />
+        {wishlist.map((item) => (
 
-                                    <h2>{item.productId.name}</h2>
+            <div className="wishlist-card" key={item._id}>
 
-                                    <h3>
-                                        ₹{item.productId.price.toLocaleString()}
-                                    </h3>
+                <img
+                    src={`https://pepper-backend-2.onrender.com/uploads/${item.productId.image}`}
+                    alt={item.productId.name}
+                />
 
-                                    <div className="wishlist-buttons">
+                <h2>{item.productId.name}</h2>
 
-                                        <button className="cart-btn" onClick={()=>addtocart(item.productId._id)}>
-                                            Add To Cart
-                                        </button>
+                <h3>
+                    ₹{item.productId.price.toLocaleString()}
+                </h3>
 
-                                        <button
-                                            className="remove-btn"
-                                            onClick={()=>removeWish(item.productId._id)}
-                                        >
-                                            Remove
-                                        </button>
+                <div className="wishlist-buttons">
 
-                                    </div>
+                    <button
+                        className="cart-btn"
+                        onClick={() => addtocart(item.productId._id)}
+                    >
+                        Add To Cart
+                    </button>
 
-                                </div>
+                    <button
+                        className="remove-btn"
+                        onClick={() => removeWish(item.productId._id)}
+                    >
+                        Remove
+                    </button>
 
-                            ))
-                        }
+                </div>
 
-                    </div>
-            }
+            </div>
 
+        ))}
+
+    </div>
+
+)
+}
         </div>
 <MobileBottomNav/>
         </>

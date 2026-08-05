@@ -966,3 +966,32 @@ font-size:15px;
    
 }
 
+.loader-container{
+    min-height:60vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+}
+
+.loader{
+    width:55px;
+    height:55px;
+    border:5px solid rgba(255,255,255,.15);
+    border-top:5px solid #ffb300;
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+
+.loader-container p{
+    color:white;
+    font-size:18px;
+    font-weight:500;
+}
+
+@keyframes spin{
+    100%{
+        transform:rotate(360deg);
+    }
+}

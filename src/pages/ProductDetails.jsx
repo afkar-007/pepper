@@ -169,7 +169,7 @@ function ProductDetails() {
 
 
 <span className="discount">
-{product.discount} OFF
+{product.discount}% OFF
 </span>
 
 

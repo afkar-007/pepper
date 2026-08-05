@@ -10,6 +10,7 @@ import { CartContext } from '../context/CartContext'
 function Login() {
   const {ordergetContext,GetcartContext,getWishlistContext}=useContext(CartContext)
 const navigate = useNavigate()
+const [showPassword,setShowPassword]=useState(false)
 
 const [email,setEmail]=useState("")
 const [password,setPassword]=useState("")
@@ -36,8 +37,39 @@ useEffect(()=>{
 
   async function GetUser(e) {
  e.preventDefault()
+ if(Uname===""){
+  seterror("Name has empty")
+  return
+ }
+ if(Uname.length<3){
+  seterror("Name have atleast 3 characters")
+  return
+ }
+ if(email===""){
+  seterror("Email has empty")
+  return
+ }
+ if(email.length<3){
+  seterror("Email name have atleast 3 characters")
+  return
+ }
+ if(!email.includes("@gmail.com"||"@email.com")){
+  seterror("Email doesn't have @gmail.com ")
+return
+ }
+   if(email.length<13){
+      seterror("Email name have atleast 3 characters")
+  return
+   }
 
-   
+   if(password===""){
+      seterror("Password has empty")
+  return
+   }
+   if(password.length<4){
+    seterror("Password atleast have 4 characters")
+    return
+   }
 
 
 
@@ -139,9 +171,15 @@ useEffect(()=>{
             <input
             value={password}
             onChange={(e)=>setPassword(e.target.value)}
-              type="password"
-              placeholder="Password"
+              type={showPassword?"text":"password"}
+              placeholder="Password "
             />
+                  <i
+        className={`bi ${showPassword ? "bi-eye-slash-fill" : "bi-eye-fill"} eye-icon-log`}
+        onClick={() => setShowPassword(!showPassword)}
+    ></i>
+              
+
           </div>
           <p>{error}</p>
 

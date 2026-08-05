@@ -13,6 +13,7 @@ import MobileBottomNav from "../components/MobileBottomNav";
 function Profile() {
   const {cart,wishlist,order}=useContext(CartContext)
   const navigate = useNavigate()
+   const [loading, setLoading] = useState(true);
 
 
   const cartlength=cart.length
@@ -32,8 +33,15 @@ function Profile() {
 
     
     useEffect(()=>{
+      const check = localStorage.getItem("isLoggedin")
+      if(check !=="true"){
+
+  navigate('/')
+  return
+}
 orderget()
 getprofile()
+
 
     },[])
 
@@ -41,6 +49,7 @@ getprofile()
 
 
     async function orderget() {
+     
     const token = localStorage.getItem("token")
     const response = await fetch("https://pepper-backend-2.onrender.com/pepper/products/getOrder",{
       
@@ -67,11 +76,13 @@ getprofile()
       alert(data.message)
     }
     
+     
   }
 
 
 
   async function getprofile() {
+     setLoading(true);
 
 
      const token = localStorage.getItem("token")
@@ -97,7 +108,7 @@ getprofile()
 
 
 
-
+setLoading(false);
 
     
   }
@@ -178,8 +189,7 @@ getprofile()
   function logout(){
 localStorage.removeItem("token")
 localStorage.removeItem("isLoggedin")
-console.log(localStorage.getItem("token"));
-  console.log(localStorage.getItem("isLoggedin"));
+
 navigate('/')
 
 
