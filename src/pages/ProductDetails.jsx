@@ -139,7 +139,7 @@ function ProductDetails() {
 <div className="leftSection">
 
 <div className="imageCard">
-<img  src={`https://pepper-backend-2.onrender.com/uploads/${product.image}`} alt="" />
+<img  src={product.image} alt="" />
 </div>
 
 </div>
@@ -201,7 +201,7 @@ function ProductDetails() {
 
  {product.ram && <div className="spec">
 <h4>RAM</h4>
-<p>{product.ram}</p>
+<p>{product.ram}GB</p>
 </div>}
 
  {product.storage && <div className="spec">
