@@ -157,7 +157,7 @@ console.log(err);
 
         {product.map((item)=>(
 
-        <div className="product-card" key={item._id}>
+        <div className="product-card" key={item._id}   onClick={()=>navigate(`/productsDetails/${item._id}`)}>
 
             {/* Left */}
 
@@ -169,7 +169,7 @@ console.log(err);
                     src={item.image}
                     alt={item.name}
                     className="product-image"
-                    onClick={()=>navigate(`/productsDetails/${item._id}`)}
+                  
                     />
 
                 </div>
@@ -178,7 +178,7 @@ console.log(err);
 
             {/* Center */}
 
-            <div className="middle-section"  onClick={()=>navigate(`/productsDetails/${item._id}`)}>
+            <div className="middle-section"  >
 
                 <p className="brand">
 
@@ -186,13 +186,13 @@ console.log(err);
 
                 </p>
 
-                <h2 className="product-name"  onClick={()=>navigate(`/productsDetails/${item._id}`)}>
+                <h2 className="product-name"  >
 
                     {item.name}
 
                 </h2>
 
-                <div className="rating-row"  onClick={()=>navigate(`/productsDetails/${item._id}`)}>
+                <div className="rating-row" >
 
                     <span className="star">
                         ★★★★★ {item.rating}
@@ -206,7 +206,7 @@ console.log(err);
 
                 </div>
 
-                <p className="description"  onClick={()=>navigate(`/productsDetails/${item._id}`)}>
+                <p className="description">
 
                     {
                         item.phoneDescription ||
@@ -225,7 +225,7 @@ console.log(err);
 
             <div className="right-section">
 
-                <div className="price-box"  onClick={()=>navigate(`/productsDetails/${item._id}`)}>
+                <div className="price-box"  >
 
                     <span className="discount">
 
@@ -233,7 +233,7 @@ console.log(err);
 
                     </span>
 
-                    <h2  onClick={()=>navigate(`/productsDetails/${item._id}`)}>
+                    <h2>
 
                         ₹{item.price}
 
@@ -265,14 +265,18 @@ console.log(err);
 
                 <div className="button-group">
 
-                    <button className="cart-btn" onClick={()=>addtocart(item._id)}>
+                    <button className="cart-btn" onClick={(e)=>{
+                        e.stopPropagation()
+                        addtocart(item._id)}}>
     
                          
                         Add To Cart
 
                     </button>
 
-                    <button className="buy-btn" onClick={()=>Addtowishlist(item._id)}>
+                    <button className="buy-btn" onClick={(e)=>{
+                        e.stopPropagation()
+                        Addtowishlist(item._id)}}>
 
                     Add to wishlist
 

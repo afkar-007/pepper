@@ -9,6 +9,7 @@ import MobileBottomNav from "../components/MobileBottomNav";
 function ProductDetails() {
     const {GetcartContext,getWishlistContext}=useContext(CartContext)
     const {id}=useParams()
+    const [loading, setLoading] = useState(true);
 
     const [product,setProduct]=useState(null)
 
@@ -17,13 +18,14 @@ function ProductDetails() {
     },[id])
 
     async function getoneProduct() {
+         setLoading(true);
          const token = localStorage.getItem("token")
 
         const response = await fetch(`https://pepper-backend-2.onrender.com/pepper/products/getoneProduct/${id}`,{
              headers:{
                 authorization:`Bearer ${token}`
             }
-
+     
         })
 
 
@@ -37,14 +39,31 @@ function ProductDetails() {
          console.log("product not fetched");
          
         } 
-    }
-
-    if(!product){
-        return(<></>)
+         setLoading(false);
     }
 
 
+  if (loading) {
+  return (
+    <>
+      <Navbar />
 
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
+        <p>Loading Product...</p>
+      </div>
+    </>
+  );
+}
+
+if (!product) {
+  return (
+    <>
+      <Navbar />
+      <h2>Product Not Found</h2>
+    </>
+  );
+}
 
 
 
@@ -131,7 +150,7 @@ function ProductDetails() {
   return (
     <>
     <Navbar/>
-    <>
+    
     <div className="productPage">
 
 <div className="productContainer">
@@ -201,7 +220,7 @@ function ProductDetails() {
 
  {product.ram && <div className="spec">
 <h4>RAM</h4>
-<p>{product.ram}GB</p>
+<p>{product.ram}</p>
 </div>}
 
  {product.storage && <div className="spec">
@@ -313,7 +332,7 @@ function ProductDetails() {
 
 
  {product.anc && <div className="spec">
-<h4>Active Noise Cancellation</h4>
+<h4>Noise Cancellation</h4>
 <p>{product.anc}</p>
 </div>}
 
@@ -441,10 +460,10 @@ Free Delivery • Secure Payment • 7 Days Replacement •
 
 </div>
     
-    </>
+    
     <MobileBottomNav/>
-    </>
-
+    
+</>
   )
 }
 

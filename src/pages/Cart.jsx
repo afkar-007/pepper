@@ -205,17 +205,17 @@ function Cart() {
       {product.map((item) => {
         if (!item.productId) {
           return (
-            <div className="cart-card" key={item._id}>
+            <div className="cart-card" key={item._id} >
               <h3>Product no longer available</h3>
             </div>
           );
         }
 
         return (
-          <div className="cart-card" key={item._id}>
+          <div className="cart-card" key={item._id} onClick={() => navigate(`/productsDetails/${item.productId._id}`)}>
             <div
               className="cart-image"
-              onClick={() => navigate(`/productsDetails/${item.productId._id}`)}
+              
             >
               <img
                 src={item.productId.image}
@@ -224,7 +224,7 @@ function Cart() {
             </div>
 
             <div className="cart-details">
-              <h2 onClick={() => navigate(`/productsDetails/${item.productId._id}`)}>
+              <h2 >
                 {item.productId.name}
               </h2>
 
@@ -240,19 +240,26 @@ function Cart() {
               </p>
 
               <div className="cart-buttons">
-                <button onClick={() => decreaseQuantity(item.productId._id)}>
+                <button onClick={(e) =>{
+                  e.stopPropagation()
+                   decreaseQuantity(item.productId._id)}}>
                   -
                 </button>
 
                 <span>{item.quantity}</span>
 
-                <button onClick={() => increaseQuantity(item.productId._id)}>
+
+                <button onClick={(e) =>{
+                  e.stopPropagation()
+                  increaseQuantity(item.productId._id)}}>
                   +
                 </button>
 
                 <button
                   className="remove-btn"
-                  onClick={() => remove(item.productId._id)}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    remove(item.productId._id)}}
                 >
                   Remove
                 </button>

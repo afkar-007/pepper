@@ -88,7 +88,7 @@ loading ? (
 
                 <img
                     onClick={() => navigate(`/productsDetails/${order.productId._id}`)}
-                    src={`https://pepper-backend-2.onrender.com/uploads/${order.productId.image}`}
+                    src={order.productId.image}
                     alt={order.productId.name}
                 />
 

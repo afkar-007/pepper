@@ -6,9 +6,11 @@ import Navbar from '../components/Navbar'
 import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
 import MobileBottomNav from "../components/MobileBottomNav";
+import { useNavigate } from 'react-router-dom'
 
 
 function Wishlist() {
+    const navigate= useNavigate()
   const [wishlist,setWishlist]=useState([])
   const {getWishlistContext,GetcartContext}=useContext(CartContext)
  const [loading, setLoading] = useState(true);
@@ -147,10 +149,10 @@ loading ? (
 
         {wishlist.map((item) => (
 
-            <div className="wishlist-card" key={item._id}>
+            <div className="wishlist-card" key={item._id} onClick={()=>navigate(`/productsDetails/${item.productId._id}`)}>
 
                 <img
-                    src={`https://pepper-backend-2.onrender.com/uploads/${item.productId.image}`}
+                    src={item.productId.image}
                     alt={item.productId.name}
                 />
 
@@ -164,14 +166,18 @@ loading ? (
 
                     <button
                         className="cart-btn"
-                        onClick={() => addtocart(item.productId._id)}
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            addtocart(item.productId._id)}}
                     >
                         Add To Cart
                     </button>
 
                     <button
                         className="remove-btn"
-                        onClick={() => removeWish(item.productId._id)}
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            removeWish(item.productId._id)}}
                     >
                         Remove
                     </button>

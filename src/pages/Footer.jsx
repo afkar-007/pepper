@@ -162,7 +162,7 @@ function Footer() {
 
           <Link to="/products/phones">Smart Phones</Link>
 
-          <Link to="/products/Laptops">Laptops</Link>
+          <Link to="/products/laptops">Laptops</Link>
 
           <Link to='/products/dress'>Fashion</Link>
 

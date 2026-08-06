@@ -29,7 +29,7 @@ function Category() {
         <p className="category-sub">120+ Products</p>
     </div>
 
-    <div className="category-card" onClick={()=>navigate('/products/Laptops')}>
+    <div className="category-card" onClick={()=>navigate('/products/laptops')}>
         <img src={laptop} alt="" />
         <h3 className="category-name">Laptops</h3>
         <p className="category-sub">25+ Products</p>

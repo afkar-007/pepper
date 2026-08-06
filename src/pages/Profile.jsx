@@ -344,7 +344,7 @@ navigate('/')
 
           <div className="order-left">
             
-              <img onClick={()=>navigate(`/productsDetails/${sends.productId._id}`)}   src={`https://pepper-backend-2.onrender.com/uploads/${sends.productId.image}`} alt="" />
+              <img onClick={()=>navigate(`/productsDetails/${sends.productId._id}`)}   src={sends.productId.image} alt="" />
 
             <div >
               <h5 onClick={()=>navigate(`/productsDetails/${sends.productId._id}`)} >{sends.productId.name}</h5>

@@ -1062,62 +1062,35 @@ max-width:850px;
 /*==========================================
           PREMIUM HOVER EFFECTS
 ==========================================*/
-
-.imageCard,
-.spec,
-.cart,
-.buy,
-.delivery{
-
-    transition:all .35s ease;
-
+.loading-container{
+    height:80vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
 }
 
-.cart:active,
-.buy:active{
-
-    transform:scale(.97);
-
-}
-
-.spec:hover{
-
-    transform:translateY(-8px);
-
-}
-
-.imageCard:hover img{
-
-    transform:scale(1.05) rotate(-2deg);
-
-}
-
-
-
-.brand{
-
-    position:relative;
-
-    display:inline-block;
-
-}
-
-.brand::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    bottom:-8px;
-
+.loading-spinner{
     width:60px;
+    height:60px;
+    border:6px solid #e5e5e5;
+    border-top:6px solid #2563eb;
+    border-radius:50%;
+    animation:spin 0.8s linear infinite;
+}
 
-    height:3px;
+.loading-container p{
+    font-size:18px;
+    font-weight:600;
+    color:#555;
+}
 
-    border-radius:20px;
-
-    background:#4f8cff;
-
+@keyframes spin{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
 }
