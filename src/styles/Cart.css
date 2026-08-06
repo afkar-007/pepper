@@ -282,6 +282,32 @@
     width:100%;
 }
 
+
+}
+
+
+@media (max-width:768px){
+
+.cart-buttons{
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+}
+
+.cart-buttons button{
+    width:45px;
+    height:45px;
+}
+
+.remove-btn{
+    width:100% !important;
+    max-width:250px;
+    height:45px !important;
+}
+
 }
 
 /* ===========================

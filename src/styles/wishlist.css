@@ -4,8 +4,9 @@
     width:100%;
     min-height:100vh;
     padding:60px 7%;
+    padding-bottom:100px; /* Add this */
     background:#f8fafc;
-    margin-top: 6.2rem;
+    margin-top:6.2rem;
 }
 
 .wishlist-title{
@@ -31,6 +32,8 @@
     transition:.35s;
     display:flex;
     flex-direction:column;
+     height:auto;
+    min-height:fit-content;
 }
 
 .wishlist-card:hover{
@@ -156,6 +159,19 @@
 
     .wishlist-buttons{
         flex-direction:column;
+
+            .wishlist-buttons{
+        display:flex;
+        flex-direction:column;
+        width:100%;
+        gap:12px;
+    }
+
+    .cart-btn,
+    .remove-btn{
+        width:100%;
+    }
+
         
          
 
