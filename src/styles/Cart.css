@@ -14,6 +14,7 @@
     width:92%;
     max-width:1400px;
     margin:40px auto;
+   
 }
 
 .cart-title{
@@ -43,6 +44,7 @@
     gap:30px;
     box-shadow:0 12px 35px rgba(0,0,0,.08);
     transition:.35s;
+     margin-bottom: 4rem;
 }
 
 .cart-card:hover{

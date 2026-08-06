@@ -34,6 +34,7 @@
     flex-direction:column;
      height:auto;
     min-height:fit-content;
+    margin-bottom: 3rem;
 }
 
 .wishlist-card:hover{
