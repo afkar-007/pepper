@@ -194,8 +194,9 @@ return
 
           
 
-          <button onClick={(e)=>GetUser(e)} className="login-btn">
+          <button onClick={(e)=>GetUser(e)} className="login-btn" disabled={loading}>
             {loading?"Logining...":"Login" }
+            
           </button>
 
 
