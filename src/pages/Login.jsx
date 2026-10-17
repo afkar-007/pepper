@@ -16,6 +16,7 @@ const [email,setEmail]=useState("")
 const [password,setPassword]=useState("")
 const [Uname,setname]=useState("")
 const [error,seterror]=useState("")
+  const [loading,setLoading]=useState(false)
 
 useEffect(()=>{
   const check = localStorage.getItem("isLoggedin")
@@ -36,6 +37,8 @@ useEffect(()=>{
 
 
   async function GetUser(e) {
+    try{
+      setLoading(true)
  e.preventDefault()
  if(Uname===""){
   seterror("Name has empty")
@@ -116,7 +119,13 @@ return
       }else{
         seterror(data.message)
       }
-      
+    }
+    catch(err){
+      console.log(err.message)
+    }
+    finally{
+      setLoading(false)
+    }
 
 
 
@@ -186,7 +195,7 @@ return
           
 
           <button onClick={(e)=>GetUser(e)} className="login-btn">
-            Login 
+            {loading?"Logining...":"Login" }
           </button>
 
 
