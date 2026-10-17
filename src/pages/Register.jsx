@@ -14,10 +14,13 @@ function Register() {
     const [password ,setPassword]=useState("")
     const [error,setError]=useState("")
     const [showPassword,setShowPassword]=useState(false)
+    const [loading,setLoading]=useState(false)
 
 
 
     async function UserPost() {
+        try{
+            setLoading(true)
         if(name===""){
             setError("Username has empty ")
             return
@@ -75,6 +78,12 @@ function Register() {
         alert(data.message)
         navigate('/')
        }
+        }catch(err){
+            console.log(err.message)
+        }
+        finally{
+            setLoading(false)
+        }
        
         
     }
@@ -135,7 +144,7 @@ function Register() {
       {error &&  <p className='errorreg'> {error}</p>}
 
         <button onClick={UserPost} className="register-btn">
-            Create Account
+            {loading ? "Registering...": "Create Account"}
         </button>
 
         <div className="login-text">
